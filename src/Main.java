@@ -5,3 +5,7 @@ public class Main {
         new Rechner("Taschenrechner");
     }
 }
+
+
+//TODO: Teilen durch 0 nicht möglich
+//TODO: Bei eingabe nur ein Komma möglich
