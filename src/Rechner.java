@@ -6,11 +6,22 @@ public class Rechner extends JFrame{
     private JPanel panel;
     private JButton button1;
 
-    public Rechner() {
+    public Rechner(String titel) {
 
+        super(titel);
+        // Grundeinstellungen
         setContentPane(panel);
         setVisible(true);
-        pack();
+        //Fenstergröße definieren
+        setSize(500, 300);
+        // das Fenster soll mittig erstellt werden
+        setLocationRelativeTo(null);
+        // Fenstergröße darf nicht geändert werden
+        setResizable(false);
+
+
+        //die Standardaktion setzen
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
 
