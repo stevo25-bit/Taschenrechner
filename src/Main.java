@@ -6,6 +6,10 @@ public class Main {
     }
 }
 
-
+//Fehlerbehandlungen
 //TODO: Teilen durch 0 nicht möglich
 //TODO: Bei eingabe nur ein Komma möglich
+//TODO: immer nur ein Operand zur zeit
+
+//Sonstiges
+//TODO: Nachkommerstellen ohne nullen anzeigen
