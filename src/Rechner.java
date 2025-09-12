@@ -18,7 +18,7 @@ public class Rechner extends JFrame{
     private JButton button_null;
     private JButton button_vorzeichen;
     private JButton button_komma;
-    private JButton button_del_eingabe;
+    private JButton button_del_back;
     private JButton button_del_alles;
     private JButton button_add;
     private JButton button_sub;
@@ -28,7 +28,7 @@ public class Rechner extends JFrame{
     private JLabel ausgabe1;
     private JLabel ausgabe2;
     private JScrollPane scrollbar;
-    private JComboBox comboBox1;
+    private JButton button_del_eingabe;
     private String eingabe1 = "";
     private String eingabe2 = "";
     private String eingabe3 = "";
@@ -59,8 +59,8 @@ public class Rechner extends JFrame{
 
         //*******************************
         //TODO: Bild für delete einfügen
-        button_del_eingabe.setIcon(new ImageIcon("bitmaps/loschen.png"));
-        button_del_eingabe.setText("");
+        button_del_back.setIcon(new ImageIcon("bitmaps/loschen.png"));
+        button_del_back.setText("");
 
         // Anzeige beim Erstellen vereinfachen
         ausgabe1.setText("");
@@ -180,14 +180,20 @@ public class Rechner extends JFrame{
                 ausgabe2.setText("");
             }
         });
-        button_del_eingabe.addActionListener(new ActionListener() {
+        button_del_back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (eingabe1.length() > 0) {
                     eingabe1 = eingabe1.substring(0, eingabe1.length() - 1);
                     ausgabe1.setText(eingabe1);
                 }
-
+            }
+        });
+        button_del_eingabe.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                eingabe1 = "";
+                ausgabe1.setText("");
             }
         });
         button_del_alles.addActionListener(new ActionListener() {
@@ -216,6 +222,7 @@ public class Rechner extends JFrame{
 
             }
         });
+
     }
 
 
