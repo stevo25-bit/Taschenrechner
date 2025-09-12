@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 public class Rechner extends JFrame{
     private JPanel panel;
-    private JButton button_klammer_auf;
     private JTextArea ausgabe3;
     private JButton button_eins;
     private JButton button_zwei;
@@ -19,7 +18,6 @@ public class Rechner extends JFrame{
     private JButton button_null;
     private JButton button_vorzeichen;
     private JButton button_komma;
-    private JButton button_klammer_zu;
     private JButton button_del_eingabe;
     private JButton button_del_alles;
     private JButton button_add;
@@ -30,6 +28,7 @@ public class Rechner extends JFrame{
     private JLabel ausgabe1;
     private JLabel ausgabe2;
     private JScrollPane scrollbar;
+    private JComboBox comboBox1;
     private String eingabe1 = "";
     private String eingabe2 = "";
     private String eingabe3 = "";
@@ -145,20 +144,6 @@ public class Rechner extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 eingabe1 += ",";
-                ausgabe1.setText(eingabe1);
-            }
-        });
-        button_klammer_auf.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                eingabe1 += "(";
-                ausgabe1.setText(eingabe1);
-            }
-        });
-        button_klammer_zu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                eingabe1 += ")";
                 ausgabe1.setText(eingabe1);
             }
         });

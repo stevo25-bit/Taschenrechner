@@ -13,4 +13,3 @@ public class Main {
 
 //Sonstiges
 //TODO: Nachkommerstellen ohne nullen anzeigen
-//TODO: Nur ein komma eingeben

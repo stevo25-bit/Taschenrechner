@@ -13,14 +13,6 @@
           <grid row="4" column="0" row-span="1" col-span="4" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
-      <component id="9b0f3" class="javax.swing.JButton" binding="button_klammer_auf">
-        <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="("/>
-        </properties>
-      </component>
       <component id="15b68" class="javax.swing.JButton" binding="button_sieben">
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -51,14 +43,6 @@
         </constraints>
         <properties>
           <text value="+/-"/>
-        </properties>
-      </component>
-      <component id="a717" class="javax.swing.JButton" binding="button_klammer_zu">
-        <constraints>
-          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value=")"/>
         </properties>
       </component>
       <component id="bf3f8" class="javax.swing.JButton" binding="button_acht">
@@ -125,38 +109,6 @@
           <text value="9"/>
         </properties>
       </component>
-      <component id="4dcc3" class="javax.swing.JButton" binding="button_add">
-        <constraints>
-          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="+"/>
-        </properties>
-      </component>
-      <component id="64ec4" class="javax.swing.JButton" binding="button_sub">
-        <constraints>
-          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="-"/>
-        </properties>
-      </component>
-      <component id="90303" class="javax.swing.JButton" binding="button_div">
-        <constraints>
-          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="/"/>
-        </properties>
-      </component>
-      <component id="89f82" class="javax.swing.JButton" binding="button_mul">
-        <constraints>
-          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="x"/>
-        </properties>
-      </component>
       <scrollpane id="6180d" binding="scrollbar">
         <constraints>
           <grid row="1" column="4" row-span="7" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -172,14 +124,6 @@
           </component>
         </children>
       </scrollpane>
-      <component id="f87c5" class="javax.swing.JButton" binding="button_berechnen">
-        <constraints>
-          <grid row="9" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="="/>
-        </properties>
-      </component>
       <component id="e6711" class="javax.swing.JLabel" binding="ausgabe1">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
@@ -204,27 +148,75 @@
           <text value="ausgabe2"/>
         </properties>
       </component>
-      <component id="8b844" class="javax.swing.JButton" binding="button_del_eingabe">
-        <constraints>
-          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="del"/>
-        </properties>
-      </component>
-      <component id="e1426" class="javax.swing.JButton" binding="button_del_alles">
-        <constraints>
-          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="C"/>
-        </properties>
-      </component>
       <hspacer id="cd5b8">
         <constraints>
           <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
+      <component id="e1426" class="javax.swing.JButton" binding="button_del_alles">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="C"/>
+        </properties>
+      </component>
+      <component id="8b844" class="javax.swing.JButton" binding="button_del_eingabe">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="del"/>
+        </properties>
+      </component>
+      <component id="4dcc3" class="javax.swing.JButton" binding="button_add">
+        <constraints>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="+"/>
+        </properties>
+      </component>
+      <component id="64ec4" class="javax.swing.JButton" binding="button_sub">
+        <constraints>
+          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="-"/>
+        </properties>
+      </component>
+      <component id="90303" class="javax.swing.JButton" binding="button_div">
+        <constraints>
+          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="/"/>
+        </properties>
+      </component>
+      <component id="89f82" class="javax.swing.JButton" binding="button_mul">
+        <constraints>
+          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="x"/>
+        </properties>
+      </component>
+      <component id="f87c5" class="javax.swing.JButton" binding="button_berechnen">
+        <constraints>
+          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="="/>
+        </properties>
+      </component>
+      <component id="40c64" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <name value=""/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>
