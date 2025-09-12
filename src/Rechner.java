@@ -28,9 +28,10 @@ public class Rechner extends JFrame{
     private JButton button_berechnen;
     private JLabel ausgabe1;
     private JLabel ausgabe2;
-
     private String eingabe1 = "";
-    private double eingabe2 = 0;
+    private String eingabe2 = "";
+    private String eingabe3 = "";
+
 
     public Rechner(String titel) {
 
@@ -39,7 +40,7 @@ public class Rechner extends JFrame{
         setContentPane(panel);
         setVisible(true);
         //Fenstergröße definieren
-        setSize(500, 300);
+        setSize(600, 320);
         // das Fenster soll mittig erstellt werden
         setLocationRelativeTo(null);
         // Fenstergröße darf nicht geändert werden
@@ -56,7 +57,7 @@ public class Rechner extends JFrame{
         //button_del_alles.setIcon(new ImageIcon("bitmaps/delete.png"));
         //button_del_alles.setText("");
 
-        // Anzeige beim erstllen vereinfachen
+        // Anzeige beim Erstellen vereinfachen
         ausgabe1.setText("");
         ausgabe2.setText("");
 
@@ -183,6 +184,45 @@ public class Rechner extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 anzeige(' ');
+                eingabe3 += "\n = " + ausgabe2.getText();
+                ausgabe3.setText(eingabe3);
+                ausgabe2.setText("");
+            }
+        });
+        button_del_eingabe.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (eingabe1.length() > 0) {
+                    eingabe1 = eingabe1.substring(0, eingabe1.length() - 1);
+                    ausgabe1.setText(eingabe1);
+                }
+
+            }
+        });
+        button_del_alles.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                eingabe1 = "";
+                eingabe2 = "";
+                eingabe3 = "";
+                ausgabe1.setText("");
+                ausgabe2.setText("");
+                ausgabe3.setText("");
+
+            }
+        });
+        button_vorzeichen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (eingabe1.charAt(0) == '-'){
+                    eingabe1 = eingabe1.substring(1);
+                    ausgabe1.setText(eingabe1);
+                }
+                else {
+                    eingabe1 = "-" + eingabe1;
+                    ausgabe1.setText(eingabe1);
+                }
+
             }
         });
     }
@@ -199,18 +239,33 @@ public class Rechner extends JFrame{
             ausgabe2.setText(eingabe1 + " " + operand);
             eingabe1 = "";
             ausgabe1.setText("");
+
+            if (ausgabe3.getText().equals("")){
+                eingabe3 += ausgabe2.getText() + " ";
+                ausgabe3.setText(eingabe3);
+            }
+            else {
+                eingabe3 +="\n" + ausgabe2.getText() + " ";
+                ausgabe3.setText(eingabe3);
+            }
         }
         else {
             ausgabe2.setText(berechnung() + " " + operand);
+            eingabe3 += eingabe1 + " " + operand + " ";
+            ausgabe3.setText(eingabe3);
             eingabe1 = "";
             ausgabe1.setText("");
         }
     }
 
     private String berechnung(){
-        String[] parts = ausgabe2.getText().split(" ");
+        eingabe2 = ausgabe2.getText().replace(',', '.');
+        String[] parts = eingabe2.split(" ");
         double zahl = Double.parseDouble(parts[0]);
         char operator = parts[1].charAt(0);
+
+        // Kommas in Punkte umschreiben
+        eingabe1 = eingabe1.replace(',', '.');
 
         if (operator == '+'){
             zahl += Double.parseDouble(eingabe1);
