@@ -54,8 +54,8 @@ public class Rechner extends JFrame{
 
         //*******************************
         //TODO: Bild für delete einfügen
-        //button_del_alles.setIcon(new ImageIcon("bitmaps/delete.png"));
-        //button_del_alles.setText("");
+        button_del_eingabe.setIcon(new ImageIcon("bitmaps/loschen.png"));
+        button_del_eingabe.setText("");
 
         // Anzeige beim Erstellen vereinfachen
         ausgabe1.setText("");
@@ -286,4 +286,5 @@ public class Rechner extends JFrame{
         }
 
     }
+
 }
