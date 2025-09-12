@@ -157,7 +157,7 @@
           <text value="x"/>
         </properties>
       </component>
-      <scrollpane id="6180d">
+      <scrollpane id="6180d" binding="scrollbar">
         <constraints>
           <grid row="1" column="4" row-span="7" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -166,7 +166,9 @@
         <children>
           <component id="73acd" class="javax.swing.JTextArea" binding="ausgabe3">
             <constraints/>
-            <properties/>
+            <properties>
+              <lineWrap value="false"/>
+            </properties>
           </component>
         </children>
       </scrollpane>
@@ -180,7 +182,11 @@
       </component>
       <component id="e6711" class="javax.swing.JLabel" binding="ausgabe1">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="20"/>
+            <preferred-size width="-1" height="20"/>
+            <maximum-size width="-1" height="20"/>
+          </grid>
         </constraints>
         <properties>
           <text value="ausgabe1"/>
@@ -188,7 +194,11 @@
       </component>
       <component id="9e096" class="javax.swing.JLabel" binding="ausgabe2">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="20"/>
+            <preferred-size width="-1" height="20"/>
+            <maximum-size width="-1" height="20"/>
+          </grid>
         </constraints>
         <properties>
           <text value="ausgabe2"/>

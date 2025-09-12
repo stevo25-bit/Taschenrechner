@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -28,6 +29,7 @@ public class Rechner extends JFrame{
     private JButton button_berechnen;
     private JLabel ausgabe1;
     private JLabel ausgabe2;
+    private JScrollPane scrollbar;
     private String eingabe1 = "";
     private String eingabe2 = "";
     private String eingabe3 = "";
@@ -40,12 +42,16 @@ public class Rechner extends JFrame{
         setContentPane(panel);
         setVisible(true);
         //Fenstergröße definieren
-        setSize(600, 320);
+        setSize(550, 320);
         // das Fenster soll mittig erstellt werden
         setLocationRelativeTo(null);
         // Fenstergröße darf nicht geändert werden
         //TODO: Fenstergröße feststellen
         //setResizable(false);
+
+        // Größe fest setzten, damit die Fenster nicht springen
+        scrollbar.setPreferredSize(new Dimension(200, 100));
+
 
 
         //die Standardaktion setzen
