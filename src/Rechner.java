@@ -55,17 +55,12 @@ public class Rechner extends JFrame{
         //die Standardaktion setzen
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
-        //*******************************
-        //TODO: Bild für delete einfügen
         button_del_back.setIcon(new ImageIcon("bitmaps/loschen.png"));
         button_del_back.setText("");
 
         // Anzeige beim Erstellen vereinfachen
         ausgabe1.setText("");
         ausgabe2.setText("");
-
-        //*******************************
 
 
 
@@ -207,7 +202,7 @@ public class Rechner extends JFrame{
                     ausgabe3.setText(eingabe3);
                     ausgabe2.setText("");
                 } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() > 0 ){
-                    //
+                    //TODO: letzter opperand in Ausgagabe 3 zu viel
                     eingabe1 = ausgabe3.getText().valueOf(ausgabe3.getText().charAt(ausgabe3.getText().length() - 4));
                     //String Klaus = ausgabe3.getText().valueOf(ausgabe3.getText().charAt(ausgabe3.getText().length() - 2));
                     //ausgabe2.setText(ausgabe3.getText().valueOf(ausgabe3.getText().charAt(ausgabe3.getText().length() - 2)));
@@ -217,6 +212,10 @@ public class Rechner extends JFrame{
                     ausgabe2.setText("");
                 } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() == 0 && ausgabe3.getText().length() > 0){
                     //TODO: Berechnung wenn eingabe 1 und 2 leer sind
+                    String temp [] = ausgabe3.getText().split("\n");
+                    String temp1 [] = temp[temp.length - 1].split("= ");
+                    System.out.println(temp[temp.length - 2]); // vorletztes Element
+                    System.out.println(temp1[1]); // letztes Element
                 } else {
                     // Nichts machen
                 }
