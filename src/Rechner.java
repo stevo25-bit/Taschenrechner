@@ -201,10 +201,25 @@ public class Rechner extends JFrame{
         button_berechnen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                anzeige(' ');
-                eingabe3 += "\n = " + ausgabe2.getText();
-                ausgabe3.setText(eingabe3);
-                ausgabe2.setText("");
+                if (ausgabe1.getText().length() > 0 && ausgabe2.getText().length() > 0){
+                    anzeige(' ');
+                    eingabe3 += "\n = " + ausgabe2.getText();
+                    ausgabe3.setText(eingabe3);
+                    ausgabe2.setText("");
+                } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() > 0 ){
+                    //
+                    eingabe1 = ausgabe3.getText().valueOf(ausgabe3.getText().charAt(ausgabe3.getText().length() - 4));
+                    //String Klaus = ausgabe3.getText().valueOf(ausgabe3.getText().charAt(ausgabe3.getText().length() - 2));
+                    //ausgabe2.setText(ausgabe3.getText().valueOf(ausgabe3.getText().charAt(ausgabe3.getText().length() - 2)));
+                    anzeige(ausgabe3.getText().charAt(ausgabe3.getText().length() - 2));
+                    eingabe3 += "\n = " + ausgabe2.getText().substring(0, ausgabe2.getText().length() - 2);
+                    ausgabe3.setText(eingabe3);
+                    ausgabe2.setText("");
+                } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() == 0 && ausgabe3.getText().length() > 0){
+                    //TODO: Berechnung wenn eingabe 1 und 2 leer sind
+                } else {
+                    // Nichts machen
+                }
             }
         });
         button_del_back.addActionListener(new ActionListener() {

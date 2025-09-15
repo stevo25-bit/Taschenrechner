@@ -9,13 +9,13 @@ public class Main {
 //Fehlerbehandlungen
 //TODO: Teilen durch 0 nicht möglich
 //TODO: Bei eingabe nur ein Komma möglich
-//TODO: immer nur ein Operand zur zeit
+
 
 //Sonstiges
 //TODO: Nachkommerstellen ohne nullen anzeigen
-//TODO: Eingabe sperren
 
-//TODO:Fehler Minus einagbe von anfanf an
+
+
 
 /*
 Ein Anklicken der Schaltfläche zum Berechnen des Ergebnisses soll ohne die Eingabe einer
