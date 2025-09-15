@@ -13,3 +13,8 @@ public class Main {
 
 //Sonstiges
 //TODO: Nachkommerstellen ohne nullen anzeigen
+
+/*
+Ein Anklicken der Schaltfläche zum Berechnen des Ergebnisses soll ohne die Eingabe einer
+weiteren Rechenoperation die letzte Rechenoperation auf das angezeigte Ergebnis wiederholen.
+*/
