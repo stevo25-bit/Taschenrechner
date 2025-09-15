@@ -13,6 +13,9 @@ public class Main {
 
 //Sonstiges
 //TODO: Nachkommerstellen ohne nullen anzeigen
+//TODO: Eingabe sperren
+
+//TODO:Fehler Minus einagbe von anfanf an
 
 /*
 Ein Anklicken der Schaltfläche zum Berechnen des Ergebnisses soll ohne die Eingabe einer

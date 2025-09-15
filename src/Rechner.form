@@ -119,6 +119,7 @@
           <component id="73acd" class="javax.swing.JTextArea" binding="ausgabe3">
             <constraints/>
             <properties>
+              <editable value="false"/>
               <lineWrap value="false"/>
             </properties>
           </component>

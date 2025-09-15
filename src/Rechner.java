@@ -30,7 +30,6 @@ public class Rechner extends JFrame{
     private JScrollPane scrollbar;
     private JButton button_del_eingabe;
     private String eingabe1 = "";
-    private String eingabe2 = "";
     private String eingabe3 = "";
 
 
@@ -150,25 +149,53 @@ public class Rechner extends JFrame{
         button_add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                anzeige('+');
+                //Wenn keine Rechnung vorhanden, dann ausführen
+                if (ausgabe1.getText().length() > 0){
+                    anzeige('+');
+                } else {
+                    // ansonnsten Opperand auf + ändern
+                    ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "+");
+                    ausgabe3.setText(ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "+ ");
+                }
             }
         });
         button_sub.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                anzeige('-');
+                //Wenn keine Rechnung vorhanden, dann ausführen
+                if (ausgabe1.getText().length() > 0){
+                    anzeige('-');
+                } else {
+                    // ansonnsten Opperand auf - ändern
+                    ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "-");
+                    ausgabe3.setText(ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "- ");
+                }
             }
         });
         button_div.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                anzeige('/');
+                //Wenn keine Rechnung vorhanden, dann ausführen
+                if (ausgabe1.getText().length() > 0){
+                    anzeige('/');
+                } else {
+                    // ansonnsten Opperand auf / ändern
+                    ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "/");
+                    ausgabe3.setText(ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "/ ");
+                }
             }
         });
         button_mul.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                anzeige('*');
+                //Wenn keine Rechnung vorhanden, dann ausführen
+                if (ausgabe1.getText().length() > 0){
+                    anzeige('*');
+                } else {
+                    // ansonnsten Opperand auf * ändern
+                    ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "*");
+                    ausgabe3.setText(ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "* ");
+                }
             }
         });
         button_berechnen.addActionListener(new ActionListener() {
@@ -200,7 +227,6 @@ public class Rechner extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 eingabe1 = "";
-                eingabe2 = "";
                 eingabe3 = "";
                 ausgabe1.setText("");
                 ausgabe2.setText("");
@@ -257,8 +283,8 @@ public class Rechner extends JFrame{
     }
 
     private String berechnung(){
-        eingabe2 = ausgabe2.getText().replace(',', '.');
-        String[] parts = eingabe2.split(" ");
+        // Kommas in Punkte umwandeln und anhand der Leerzeichen aufteilen
+        String[] parts = ausgabe2.getText().replace(',', '.').split(" ");
         double zahl = Double.parseDouble(parts[0]);
         char operator = parts[1].charAt(0);
 
