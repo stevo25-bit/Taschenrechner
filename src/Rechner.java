@@ -137,8 +137,18 @@ public class Rechner extends JFrame{
         button_komma.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                eingabe1 += ",";
-                ausgabe1.setText(eingabe1);
+                // Nur ein Komma in der Eingabe zulassen
+                if (eingabe1.contains(",")){
+                    JOptionPane.showMessageDialog(
+                            Rechner.this,   // Bezug auf das JFrame
+                            "Nur ein Komma möglich!!!",
+                            "Achtung!",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+                else {
+                    eingabe1 += ",";
+                    ausgabe1.setText(eingabe1);
+                }
             }
         });
         button_add.addActionListener(new ActionListener() {
@@ -310,6 +320,14 @@ public class Rechner extends JFrame{
         }
         else {
             // Entscheidung, ob die Rechnung noch weiter geht.
+            if (eingabe1.equals("0") && ausgabe2.getText().charAt(ausgabe2.getText().length() - 1) == '/'){
+                JOptionPane.showMessageDialog(
+                        Rechner.this,   // Bezug auf das JFrame
+                        "Teilen durch 0 nicht möglich!!!",
+                        "Achtung!",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+            //TODO: else einfügen
             if (operand == ' '){
                 ausgabe2.setText(berechnung());
                 eingabe3 += eingabe1;
@@ -324,6 +342,7 @@ public class Rechner extends JFrame{
                 eingabe1 = "";
                 ausgabe1.setText("");
             }
+
         }
     }
 

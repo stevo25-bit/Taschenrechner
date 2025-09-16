@@ -8,8 +8,6 @@ public class Main {
 
 //Fehlerbehandlungen
 //TODO: Teilen durch 0 nicht möglich
-//TODO: Bei eingabe nur ein Komma möglich
-
 
 //Sonstiges
 //TODO: Nachkommerstellen ohne nullen anzeigen
