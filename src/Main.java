@@ -14,6 +14,8 @@ public class Main {
 //Sonstiges
 //TODO: Nachkommerstellen ohne nullen anzeigen
 
+//TODO: wenn ein ergebnis vorhanden, dann mit opperator weiterrechnen
+
 
 
 

@@ -221,19 +221,10 @@ public class Rechner extends JFrame{
                     ausgabe2.setText("");
                     eingabe1 = "";
                 } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() == 0 && ausgabe3.getText().length() > 0){
-                    //TODO: Berechnung wenn eingabe 1 und 2 leer sind
-
                     // Erstmal alle Informationen holen, die wir brauchen
-                    String[] ruckgabe = new String[3];
                     String temp [] = ausgabe3.getText().split("\n");
                     String temp1 [] = temp[temp.length - 2].split(" ");
-                    System.out.print("Split 2, Letzte Zahl: ");
-                    System.out.println(temp1[temp1.length - 1]);
-                    System.out.print("Split 3, Letzter Opperand: ");
-                    System.out.println(temp1[temp1.length - 2]);
                     String temp2 [] = temp[temp.length - 1].split("= ");
-                    System.out.print("Split 5, Letztes Ergebnis: ");
-                    System.out.println(temp2[1]); // letztes Element
 
                     //Werte zuweisen
                     eingabe1 = temp1[temp1.length - 1];
@@ -318,11 +309,21 @@ public class Rechner extends JFrame{
             }
         }
         else {
-            ausgabe2.setText(berechnung() + " " + operand);
-            eingabe3 += eingabe1 + " " + operand + " ";
-            ausgabe3.setText(eingabe3);
-            eingabe1 = "";
-            ausgabe1.setText("");
+            // Entscheidung, ob die Rechnung noch weiter geht.
+            if (operand == ' '){
+                ausgabe2.setText(berechnung());
+                eingabe3 += eingabe1;
+                ausgabe3.setText(eingabe3);
+                eingabe1 = "";
+                ausgabe1.setText("");
+            }
+            else {
+                ausgabe2.setText(berechnung() + " " + operand);
+                eingabe3 += eingabe1 + " " + operand + " ";
+                ausgabe3.setText(eingabe3);
+                eingabe1 = "";
+                ausgabe1.setText("");
+            }
         }
     }
 
