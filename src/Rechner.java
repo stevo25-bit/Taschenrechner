@@ -202,8 +202,6 @@ public class Rechner extends JFrame{
                     ausgabe3.setText(eingabe3);
                     ausgabe2.setText("");
                 } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() > 0 ){
-                    //TODO: fehler:Es wird nur ein zeichen übergeben
-
                     // Übergibt die letzte Zahl der Eingabe
                     String temp [] = ausgabe3.getText().split("\n");
                     if (temp.length > 1){
@@ -212,10 +210,7 @@ public class Rechner extends JFrame{
                     } else {
                         String temp1 [] = temp[0].split(" ");
                         eingabe1 = temp1[temp1.length - 2];
-                        System.out.print("eingabe1: ");
-                        System.out.println(eingabe1);
                     }
-
                     // Übergibt den letzten Opperanten
                     anzeige(ausgabe3.getText().charAt(ausgabe3.getText().length() - 2));
                     // letzte drei Zeichen wieder abschneiden
@@ -224,13 +219,32 @@ public class Rechner extends JFrame{
                     eingabe3 += "\n = " + ausgabe2.getText().substring(0, ausgabe2.getText().length() - 2);
                     ausgabe3.setText(eingabe3);
                     ausgabe2.setText("");
+                    eingabe1 = "";
                 } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() == 0 && ausgabe3.getText().length() > 0){
                     //TODO: Berechnung wenn eingabe 1 und 2 leer sind
 
-                    letzteEingabe(ausgabe3);
+                    // Erstmal alle Informationen holen, die wir brauchen
+                    String[] ruckgabe = new String[3];
+                    String temp [] = ausgabe3.getText().split("\n");
+                    String temp1 [] = temp[temp.length - 2].split(" ");
+                    System.out.print("Split 2, Letzte Zahl: ");
+                    System.out.println(temp1[temp1.length - 1]);
+                    System.out.print("Split 3, Letzter Opperand: ");
+                    System.out.println(temp1[temp1.length - 2]);
+                    String temp2 [] = temp[temp.length - 1].split("= ");
+                    System.out.print("Split 5, Letztes Ergebnis: ");
+                    System.out.println(temp2[1]); // letztes Element
 
+                    //Werte zuweisen
+                    eingabe1 = temp1[temp1.length - 1];
+                    ausgabe2.setText(temp2[1] + " " + temp1[temp1.length - 2]);
 
-                    //*************
+                    //Berechnung durchführen
+                    eingabe3 += "\n" + temp[temp.length -2] + " " + temp1[temp1.length - 2] + " " + temp1[temp1.length - 1];
+                    eingabe3 += "\n = " + berechnung();
+                    ausgabe3.setText(eingabe3);
+                    ausgabe2.setText("");
+                    eingabe1 = "";
 
                 } else {
                     // Nichts machen
@@ -339,32 +353,6 @@ public class Rechner extends JFrame{
             return String.format("%.5f", zahl);
         }
 
-    }
-
-    private String[] letzteEingabe(JTextArea eingabe){
-        /*
-        Gibt ein Feld mit 3 Werten zurück:
-        1. Letzte Zahl
-        2. Letzter opperand
-        2. Letztes Ergebnis
-         */
-        // Erstmal alle Informationen holen, die wir brauchen
-        String[] ruckgabe = new String[3];
-        String temp [] = eingabe.getText().split("\n");
-        String temp1 [] = temp[temp.length - 2].split(" ");
-        System.out.print("Split 2, Letzte Zahl: ");
-        System.out.println(temp1[temp1.length - 1]);
-        System.out.print("Split 3, Letzter Opperand: ");
-        System.out.println(temp1[temp1.length - 2]);
-        String temp2 [] = temp[temp.length - 1].split("= ");
-        System.out.print("Split 5, Letztes Ergebnis: ");
-        System.out.println(temp2[1]); // letztes Element
-
-        ruckgabe[0] = temp1[temp1.length - 1];
-        ruckgabe[1] = temp1[temp1.length - 2];
-        ruckgabe[2] = temp2[1];
-
-        return ruckgabe;
     }
 
 }
