@@ -155,52 +155,72 @@ public class Rechner extends JFrame{
         button_add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Wenn keine Rechnung vorhanden, dann ausführen
-                if (ausgabe1.getText().length() > 0){
-                    anzeige('+');
+                //Wenn alles leer, nichts machen
+                if (ausgabe1.getText().length() < 1 && ausgabe2.getText().length() < 1){
+                    //Nichts machen
                 } else {
-                    // ansonnsten Opperand auf + ändern
-                    ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "+");
-                    ausgabe3.setText(ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "+ ");
+                    if (ausgabe1.getText().length() > 0) { // in Eingabe 1 was drin steht, dann berechnen
+                        anzeige('+');
+                    } else {
+                        // ansonnsten Opperand auf + ändern
+                        ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "+");
+                        eingabe3 = ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "+ ";
+                        ausgabe3.setText(eingabe3);
+                    }
                 }
             }
         });
         button_sub.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Wenn keine Rechnung vorhanden, dann ausführen
-                if (ausgabe1.getText().length() > 0){
-                    anzeige('-');
+                //Wenn alles leer, nichts machen
+                if (ausgabe1.getText().length() < 1 && ausgabe2.getText().length() < 1){
+                    //Nichts machen
                 } else {
-                    // ansonnsten Opperand auf - ändern
-                    ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "-");
-                    ausgabe3.setText(ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "- ");
+                    if (ausgabe1.getText().length() > 0) {
+                        anzeige('-');
+                    } else {
+                        // ansonnsten Opperand auf - ändern
+                        ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "-");
+                        eingabe3 = ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "- ";
+                        ausgabe3.setText(eingabe3);
+                    }
                 }
             }
         });
         button_div.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Wenn keine Rechnung vorhanden, dann ausführen
-                if (ausgabe1.getText().length() > 0){
-                    anzeige('/');
+                //Wenn alles leer, nichts machen
+                if (ausgabe1.getText().length() < 1 && ausgabe2.getText().length() < 1){
+                    //Nichts machen
                 } else {
-                    // ansonnsten Opperand auf / ändern
-                    ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "/");
-                    ausgabe3.setText(ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "/ ");
+                    if (ausgabe1.getText().length() > 0) {
+                        anzeige('/');
+                    } else {
+                        // ansonnsten Opperand auf / ändern
+                        ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "/");
+                        eingabe3 = ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "/ ";
+                        ausgabe3.setText(eingabe3);
+                    }
                 }
             }
         });
         button_mul.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Wenn keine Rechnung vorhanden, dann ausführen
-                if (ausgabe1.getText().length() > 0){
-                    anzeige('*');
+                //Wenn alles leer, nichts machen
+                if (ausgabe1.getText().length() < 1 && ausgabe2.getText().length() < 1){
+                    //Nichts machen
                 } else {
-                    // ansonnsten Opperand auf * ändern
-                    ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "*");
-                    ausgabe3.setText(ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "* ");
+                    if (ausgabe1.getText().length() > 0) {
+                        anzeige('*');
+                    } else {
+                        // ansonnsten Opperand auf * ändern
+                        ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "*");
+                        eingabe3 = ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "* ";
+                        ausgabe3.setText(eingabe3);
+                    }
                 }
             }
         });

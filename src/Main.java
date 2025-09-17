@@ -10,7 +10,7 @@ public class Main {
 
 //Sonstiges
 
-//TODO: wenn ein ergebnis vorhanden, dann mit opperator weiterrechnen
+//
 
 
 
