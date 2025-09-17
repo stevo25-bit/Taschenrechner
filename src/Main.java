@@ -7,7 +7,6 @@ public class Main {
 }
 
 //Fehlerbehandlungen
-//TODO: Teilen durch 0 nicht möglich
 
 //Sonstiges
 //TODO: Nachkommerstellen ohne nullen anzeigen

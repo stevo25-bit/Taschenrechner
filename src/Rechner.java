@@ -31,6 +31,7 @@ public class Rechner extends JFrame{
     private JButton button_del_eingabe;
     private String eingabe1 = "";
     private String eingabe3 = "";
+    private boolean f_durchNull = false;
 
 
     public Rechner(String titel) {
@@ -208,10 +209,18 @@ public class Rechner extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 if (ausgabe1.getText().length() > 0 && ausgabe2.getText().length() > 0){
                     anzeige(' ');
-                    eingabe3 += "\n = " + ausgabe2.getText();
-                    ausgabe3.setText(eingabe3);
-                    ausgabe2.setText("");
-                } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() > 0 ){
+                    // Wenn durch null geteilt wird, dann nichts ausgeben
+                    if (f_durchNull){
+                        //Eingabe löschen
+                        eingabe1 = "";
+                        ausgabe1.setText("");
+                        f_durchNull = false;
+                    } else {
+                        eingabe3 += "\n = " + ausgabe2.getText();
+                        ausgabe3.setText(eingabe3);
+                        ausgabe2.setText("");
+                    }
+                } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() > 0){
                     // Übergibt die letzte Zahl der Eingabe
                     String temp [] = ausgabe3.getText().split("\n");
                     if (temp.length > 1){
@@ -223,13 +232,21 @@ public class Rechner extends JFrame{
                     }
                     // Übergibt den letzten Opperanten
                     anzeige(ausgabe3.getText().charAt(ausgabe3.getText().length() - 2));
-                    // letzte drei Zeichen wieder abschneiden
-                    eingabe3 = eingabe3.substring(0, eingabe3.length() - 3);
-                    //Alles ausgeben
-                    eingabe3 += "\n = " + ausgabe2.getText().substring(0, ausgabe2.getText().length() - 2);
-                    ausgabe3.setText(eingabe3);
-                    ausgabe2.setText("");
-                    eingabe1 = "";
+                    // Wenn durch null geteilt wird, dann nichts machen
+                    if (f_durchNull){
+                        //Eingabe löschen
+                        eingabe1 = "";
+                        ausgabe1.setText("");
+                        f_durchNull = false;
+                    } else {
+                        // letzte drei Zeichen wieder abschneiden
+                        eingabe3 = eingabe3.substring(0, eingabe3.length() - 3);
+                        //Alles ausgeben
+                        eingabe3 += "\n = " + ausgabe2.getText().substring(0, ausgabe2.getText().length() - 2);
+                        ausgabe3.setText(eingabe3);
+                        ausgabe2.setText("");
+                        eingabe1 = "";
+                    }
                 } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() == 0 && ausgabe3.getText().length() > 0){
                     // Erstmal alle Informationen holen, die wir brauchen
                     String temp [] = ausgabe3.getText().split("\n");
@@ -326,21 +343,24 @@ public class Rechner extends JFrame{
                         "Teilen durch 0 nicht möglich!!!",
                         "Achtung!",
                         JOptionPane.INFORMATION_MESSAGE);
-            }
-            //TODO: else einfügen
-            if (operand == ' '){
-                ausgabe2.setText(berechnung());
-                eingabe3 += eingabe1;
-                ausgabe3.setText(eingabe3);
+                //Eingabe löschen
                 eingabe1 = "";
                 ausgabe1.setText("");
-            }
-            else {
-                ausgabe2.setText(berechnung() + " " + operand);
-                eingabe3 += eingabe1 + " " + operand + " ";
-                ausgabe3.setText(eingabe3);
-                eingabe1 = "";
-                ausgabe1.setText("");
+                f_durchNull = true;
+            } else {
+                if (operand == ' ') {
+                    ausgabe2.setText(berechnung());
+                    eingabe3 += eingabe1;
+                    ausgabe3.setText(eingabe3);
+                    eingabe1 = "";
+                    ausgabe1.setText("");
+                } else {
+                    ausgabe2.setText(berechnung() + " " + operand);
+                    eingabe3 += eingabe1 + " " + operand + " ";
+                    ausgabe3.setText(eingabe3);
+                    eingabe1 = "";
+                    ausgabe1.setText("");
+                }
             }
 
         }
