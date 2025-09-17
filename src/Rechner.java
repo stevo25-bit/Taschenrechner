@@ -29,6 +29,8 @@ public class Rechner extends JFrame{
     private JLabel ausgabe2;
     private JScrollPane scrollbar;
     private JButton button_del_eingabe;
+    private JButton button_hochzwei;
+    private JButton button_wurzel;
     private String eingabe1 = "";
     private String eingabe3 = "";
     private boolean f_durchNull = false;
@@ -62,6 +64,11 @@ public class Rechner extends JFrame{
         // Anzeige beim Erstellen vereinfachen
         ausgabe1.setText("");
         ausgabe2.setText("");
+
+        // Button von hoch2 und Wurzel benennen
+        button_hochzwei.setText("x\u00B2");
+        button_wurzel.setText("√x");
+
 
 
 
@@ -147,8 +154,14 @@ public class Rechner extends JFrame{
                             JOptionPane.INFORMATION_MESSAGE);
                 }
                 else {
-                    eingabe1 += ",";
-                    ausgabe1.setText(eingabe1);
+                    //Wenn nichts drin steht, dann mit 0 beginnen
+                    if (eingabe1.length() == 0){
+                        eingabe1 += "0,";
+                        ausgabe1.setText(eingabe1);
+                    } else {
+                        eingabe1 += ",";
+                        ausgabe1.setText(eingabe1);
+                    }
                 }
             }
         });
@@ -330,7 +343,32 @@ public class Rechner extends JFrame{
 
             }
         });
-
+        button_hochzwei.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (eingabe1.length() > 0) {
+                    // Falls Komma vorhanden, dann umwandeln
+                    eingabe1 = eingabe1.replace(',', '.');
+                    double temp = Double.parseDouble(eingabe1);
+                    temp = temp * temp;
+                    eingabe1 = ausgabe(temp);
+                    ausgabe1.setText(eingabe1);
+                }
+            }
+        });
+        button_wurzel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (eingabe1.length() > 0) {
+                    // Falls Komma vorhanden, dann umwandeln
+                    eingabe1 = eingabe1.replace(',', '.');
+                    double temp = Double.parseDouble(eingabe1);
+                    temp = Math.sqrt(temp);
+                    eingabe1 = ausgabe(temp);
+                    ausgabe1.setText(eingabe1);
+                }
+            }
+        });
     }
 
 
@@ -405,22 +443,24 @@ public class Rechner extends JFrame{
             zahl *= Double.parseDouble(eingabe1);
         }
 
+        return ausgabe(zahl);
+    }
+
+    private String ausgabe(Double eingabe){
         // gibt den String entweder mit oder ohne Nachkommerstellen raus.
-        if (zahl % 1 == 0){
-            return String.format("%.0f", zahl);
+        if (eingabe % 1 == 0){
+            return String.format("%.0f", eingabe);
         }
         else {
             // Nullen am Ende abschneiden
-            String ausgabe = String.format("%.5f", zahl);
+            String ausgabe = String.format("%.5f", eingabe);
             for (int i = 0; i < ausgabe.length(); i++){
                 if (ausgabe.endsWith("0")) {
                     ausgabe = ausgabe.substring(0, ausgabe.length() - 1);
                 }
             }
-
             return ausgabe;
         }
-
     }
 
 }

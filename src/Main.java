@@ -6,11 +6,9 @@ public class Main {
     }
 }
 
-//Fehlerbehandlungen
-
-//Sonstiges
-
-//
+//Zusatzfunktionen:
+//TODO: Quadrat
+//TODO: Wurzel
 
 
 
