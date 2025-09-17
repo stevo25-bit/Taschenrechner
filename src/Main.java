@@ -6,14 +6,5 @@ public class Main {
     }
 }
 
-//Zusatzfunktionen:
-//TODO: Quadrat
-//TODO: Wurzel
 
 
-
-
-/*
-Ein Anklicken der Schaltfläche zum Berechnen des Ergebnisses soll ohne die Eingabe einer
-weiteren Rechenoperation die letzte Rechenoperation auf das angezeigte Ergebnis wiederholen.
-*/

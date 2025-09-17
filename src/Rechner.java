@@ -53,8 +53,6 @@ public class Rechner extends JFrame{
         // Größe fest setzten, damit die Fenster nicht springen
         scrollbar.setPreferredSize(new Dimension(200, 100));
 
-
-
         //die Standardaktion setzen
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -68,9 +66,6 @@ public class Rechner extends JFrame{
         // Button von hoch2 und Wurzel benennen
         button_hochzwei.setText("x\u00B2");
         button_wurzel.setText("√x");
-
-
-
 
         button_null.addActionListener(new ActionListener() {
             @Override
@@ -281,6 +276,8 @@ public class Rechner extends JFrame{
                         eingabe1 = "";
                     }
                 } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() == 0 && ausgabe3.getText().length() > 0){
+                    //TODO: Auf das gesamte Ergebnis anweden
+
                     // Erstmal alle Informationen holen, die wir brauchen
                     String temp [] = ausgabe3.getText().split("\n");
                     String temp1 [] = temp[temp.length - 2].split(" ");
@@ -372,12 +369,6 @@ public class Rechner extends JFrame{
     }
 
 
-
-
-
-
-
-
     private void anzeige(char operand){
         if (ausgabe2.getText().equals("")){
             ausgabe2.setText(eingabe1 + " " + operand);
@@ -424,6 +415,7 @@ public class Rechner extends JFrame{
         }
     }
 
+
     private String berechnung(){
         // Kommas in Punkte umwandeln und anhand der Leerzeichen aufteilen
         String[] parts = ausgabe2.getText().replace(',', '.').split(" ");
@@ -446,6 +438,7 @@ public class Rechner extends JFrame{
         return ausgabe(zahl);
     }
 
+
     private String ausgabe(Double eingabe){
         // gibt den String entweder mit oder ohne Nachkommerstellen raus.
         if (eingabe % 1 == 0){
@@ -453,7 +446,7 @@ public class Rechner extends JFrame{
         }
         else {
             // Nullen am Ende abschneiden
-            String ausgabe = String.format("%.5f", eingabe);
+            String ausgabe = String.format("%.10f", eingabe);
             for (int i = 0; i < ausgabe.length(); i++){
                 if (ausgabe.endsWith("0")) {
                     ausgabe = ausgabe.substring(0, ausgabe.length() - 1);

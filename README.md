@@ -4,5 +4,6 @@ Extras:
 - Vorzeichen
 - Quadrat
 - Wurzel
+- Eingabe Zeichenweise löschen
 
 Steven Wesner
