@@ -390,7 +390,15 @@ public class Rechner extends JFrame{
             return String.format("%.0f", zahl);
         }
         else {
-            return String.format("%.5f", zahl);
+            // Nullen am Ende abschneiden
+            String ausgabe = String.format("%.5f", zahl);
+            for (int i = 0; i < ausgabe.length(); i++){
+                if (ausgabe.endsWith("0")) {
+                    ausgabe = ausgabe.substring(0, ausgabe.length() - 1);
+                }
+            }
+
+            return ausgabe;
         }
 
     }
