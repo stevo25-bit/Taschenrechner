@@ -103,8 +103,9 @@ public class RechnerLogik{
         }
         else {
             // Nullen am Ende abschneiden
-            String ausgabe = String.format("%.10f", eingabe);
-            for (int i = 0; i < ausgabe.length(); i++){
+            String ausgabe = String.format("%.10f", eingabe); // Auf 10 Stellen kürzen
+            int laenge = ausgabe.length();
+            for (int i = 0; i < laenge; i++){
                 if (ausgabe.endsWith("0")) {
                     ausgabe = ausgabe.substring(0, ausgabe.length() - 1);
                 }
@@ -155,7 +156,6 @@ public class RechnerLogik{
                 eingabe1 = "";
             }
         } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() == 0 && ausgabe3.getText().length() > 0){
-            //TODO: Auf das gesamte Ergebnis anweden
 
             // Erstmal alle Informationen holen, die wir brauchen
             String temp [] = ausgabe3.getText().split("\n");
