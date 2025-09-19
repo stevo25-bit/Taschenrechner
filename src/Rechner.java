@@ -1,9 +1,14 @@
+import Main.Rechner.RechnerLogik;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Rechner extends JFrame{
+
+    private RechnerLogik logik = new RechnerLogik();
+
     private JPanel panel;
     private JTextArea ausgabe3;
     private JButton button_eins;
@@ -31,9 +36,6 @@ public class Rechner extends JFrame{
     private JButton button_del_eingabe;
     private JButton button_hochzwei;
     private JButton button_wurzel;
-    private String eingabe1 = "";
-    private String eingabe3 = "";
-    private boolean f_durchNull = false;
 
 
     public Rechner(String titel) {
@@ -70,78 +72,78 @@ public class Rechner extends JFrame{
         button_null.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                eingabe1 += 0;
-                ausgabe1.setText(eingabe1);
+                logik.setEingabe1(logik.getEingabe1() + 0);
+                ausgabe1.setText(logik.getEingabe1());
             }
         });
         button_eins.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                eingabe1 += 1;
-                ausgabe1.setText(eingabe1);
+                logik.setEingabe1(logik.getEingabe1() + 1);
+                ausgabe1.setText(logik.getEingabe1());
             }
         });
         button_zwei.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                eingabe1 += 2;
-                ausgabe1.setText(eingabe1);
+                logik.setEingabe1(logik.getEingabe1() + 2);
+                ausgabe1.setText(logik.getEingabe1());
             }
         });
         button_drei.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                eingabe1 += 3;
-                ausgabe1.setText(eingabe1);
+                logik.setEingabe1(logik.getEingabe1() + 3);
+                ausgabe1.setText(logik.getEingabe1());
             }
         });
         button_vier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                eingabe1 += 4;
-                ausgabe1.setText(eingabe1);
+                logik.setEingabe1(logik.getEingabe1() + 4);
+                ausgabe1.setText(logik.getEingabe1());
             }
         });
         button_fuenf.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                eingabe1 += 5;
-                ausgabe1.setText(eingabe1);
+                logik.setEingabe1(logik.getEingabe1() + 5);
+                ausgabe1.setText(logik.getEingabe1());
             }
         });
         button_sechs.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                eingabe1 += 6;
-                ausgabe1.setText(eingabe1);
+                logik.setEingabe1(logik.getEingabe1() + 6);
+                ausgabe1.setText(logik.getEingabe1());
             }
         });
         button_sieben.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                eingabe1 += 7;
-                ausgabe1.setText(eingabe1);
+                logik.setEingabe1(logik.getEingabe1() + 7);
+                ausgabe1.setText(logik.getEingabe1());
             }
         });
         button_acht.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                eingabe1 += 8;
-                ausgabe1.setText(eingabe1);
+                logik.setEingabe1(logik.getEingabe1() + 8);
+                ausgabe1.setText(logik.getEingabe1());
             }
         });
         button_neun.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                eingabe1 += 9;
-                ausgabe1.setText(eingabe1);
+                logik.setEingabe1(logik.getEingabe1() + 9);
+                ausgabe1.setText(logik.getEingabe1());
             }
         });
         button_komma.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Nur ein Komma in der Eingabe zulassen
-                if (eingabe1.contains(",")){
+                if (logik.getEingabe1().contains(",")){
                     JOptionPane.showMessageDialog(
                             Rechner.this,   // Bezug auf das JFrame
                             "Nur ein Komma möglich!!!",
@@ -150,12 +152,12 @@ public class Rechner extends JFrame{
                 }
                 else {
                     //Wenn nichts drin steht, dann mit 0 beginnen
-                    if (eingabe1.length() == 0){
-                        eingabe1 += "0,";
-                        ausgabe1.setText(eingabe1);
+                    if (logik.getEingabe1().length() == 0){
+                        logik.setEingabe1(logik.getEingabe1() + "0,");
+                        ausgabe1.setText(logik.getEingabe1());
                     } else {
-                        eingabe1 += ",";
-                        ausgabe1.setText(eingabe1);
+                        logik.setEingabe1(logik.getEingabe1() + ",");
+                        ausgabe1.setText(logik.getEingabe1());
                     }
                 }
             }
@@ -168,12 +170,12 @@ public class Rechner extends JFrame{
                     //Nichts machen
                 } else {
                     if (ausgabe1.getText().length() > 0) { // in Eingabe 1 was drin steht, dann berechnen
-                        anzeige('+');
+                        logik.anzeige('+',ausgabe1, ausgabe2, ausgabe3);
                     } else {
                         // ansonnsten Opperand auf + ändern
                         ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "+");
-                        eingabe3 = ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "+ ";
-                        ausgabe3.setText(eingabe3);
+                        logik.setEingabe3(ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "+ ");
+                        ausgabe3.setText(logik.getEingabe3());
                     }
                 }
             }
@@ -186,12 +188,12 @@ public class Rechner extends JFrame{
                     //Nichts machen
                 } else {
                     if (ausgabe1.getText().length() > 0) {
-                        anzeige('-');
+                        logik.anzeige('-', ausgabe1, ausgabe2, ausgabe3);
                     } else {
                         // ansonnsten Opperand auf - ändern
                         ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "-");
-                        eingabe3 = ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "- ";
-                        ausgabe3.setText(eingabe3);
+                        logik.setEingabe3(ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "- ");
+                        ausgabe3.setText(logik.getEingabe3());
                     }
                 }
             }
@@ -204,12 +206,12 @@ public class Rechner extends JFrame{
                     //Nichts machen
                 } else {
                     if (ausgabe1.getText().length() > 0) {
-                        anzeige('/');
+                        logik.anzeige('/', ausgabe1, ausgabe2, ausgabe3);
                     } else {
                         // ansonnsten Opperand auf / ändern
                         ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "/");
-                        eingabe3 = ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "/ ";
-                        ausgabe3.setText(eingabe3);
+                        logik.setEingabe3(ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "/ ");
+                        ausgabe3.setText(logik.getEingabe3());
                     }
                 }
             }
@@ -222,12 +224,12 @@ public class Rechner extends JFrame{
                     //Nichts machen
                 } else {
                     if (ausgabe1.getText().length() > 0) {
-                        anzeige('*');
+                        logik.anzeige('*', ausgabe1, ausgabe2, ausgabe3);
                     } else {
                         // ansonnsten Opperand auf * ändern
                         ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "*");
-                        eingabe3 = ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "* ";
-                        ausgabe3.setText(eingabe3);
+                        logik.setEingabe3(ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "* ");
+                        ausgabe3.setText(logik.getEingabe3());
                     }
                 }
             }
@@ -235,91 +237,30 @@ public class Rechner extends JFrame{
         button_berechnen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (ausgabe1.getText().length() > 0 && ausgabe2.getText().length() > 0){
-                    anzeige(' ');
-                    // Wenn durch null geteilt wird, dann nichts ausgeben
-                    if (f_durchNull){
-                        //Eingabe löschen
-                        eingabe1 = "";
-                        ausgabe1.setText("");
-                        f_durchNull = false;
-                    } else {
-                        eingabe3 += "\n = " + ausgabe2.getText();
-                        ausgabe3.setText(eingabe3);
-                        ausgabe2.setText("");
-                    }
-                } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() > 0){
-                    // Übergibt die letzte Zahl der Eingabe
-                    String temp [] = ausgabe3.getText().split("\n");
-                    if (temp.length > 1){
-                        String temp1 [] = temp[temp.length - 1].split(" ");
-                        eingabe1 = temp1[temp1.length - 2];
-                    } else {
-                        String temp1 [] = temp[0].split(" ");
-                        eingabe1 = temp1[temp1.length - 2];
-                    }
-                    // Übergibt den letzten Opperanten
-                    anzeige(ausgabe3.getText().charAt(ausgabe3.getText().length() - 2));
-                    // Wenn durch null geteilt wird, dann nichts machen
-                    if (f_durchNull){
-                        //Eingabe löschen
-                        eingabe1 = "";
-                        ausgabe1.setText("");
-                        f_durchNull = false;
-                    } else {
-                        // letzte drei Zeichen wieder abschneiden
-                        eingabe3 = eingabe3.substring(0, eingabe3.length() - 3);
-                        //Alles ausgeben
-                        eingabe3 += "\n = " + ausgabe2.getText().substring(0, ausgabe2.getText().length() - 2);
-                        ausgabe3.setText(eingabe3);
-                        ausgabe2.setText("");
-                        eingabe1 = "";
-                    }
-                } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() == 0 && ausgabe3.getText().length() > 0){
-                    //TODO: Auf das gesamte Ergebnis anweden
-
-                    // Erstmal alle Informationen holen, die wir brauchen
-                    String temp [] = ausgabe3.getText().split("\n");
-                    String temp1 [] = temp[temp.length - 2].split(" ");
-                    String temp2 [] = temp[temp.length - 1].split("= ");
-
-                    //Werte zuweisen
-                    eingabe1 = temp1[temp1.length - 1];
-                    ausgabe2.setText(temp2[1] + " " + temp1[temp1.length - 2]);
-
-                    //Berechnung durchführen
-                    eingabe3 += "\n" + temp[temp.length -2] + " " + temp1[temp1.length - 2] + " " + temp1[temp1.length - 1];
-                    eingabe3 += "\n = " + berechnung();
-                    ausgabe3.setText(eingabe3);
-                    ausgabe2.setText("");
-                    eingabe1 = "";
-
-                } else {
-                    // Nichts machen
-                }
+                logik.berechnen(ausgabe1, ausgabe2, ausgabe3);
             }
         });
         button_del_back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (eingabe1.length() > 0) {
-                    eingabe1 = eingabe1.substring(0, eingabe1.length() - 1);
-                    ausgabe1.setText(eingabe1);
+                if (logik.getEingabe1().length() > 0) {
+                    logik.setEingabe1(logik.getEingabe1().substring(0, logik.getEingabe1().length() - 1));
+                    ausgabe1.setText(logik.getEingabe1());
                 }
             }
         });
         button_del_eingabe.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                eingabe1 = "";
+                logik.setEingabe1(logik.getEingabe1() + "");
                 ausgabe1.setText("");
             }
         });
         button_del_alles.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                eingabe1 = "";
-                eingabe3 = "";
+                logik.setEingabe1(logik.getEingabe1() + "");
+                logik.setEingabe3("");
                 ausgabe1.setText("");
                 ausgabe2.setText("");
                 ausgabe3.setText("");
@@ -329,13 +270,13 @@ public class Rechner extends JFrame{
         button_vorzeichen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (eingabe1.charAt(0) == '-'){
-                    eingabe1 = eingabe1.substring(1);
-                    ausgabe1.setText(eingabe1);
+                if (logik.getEingabe1().charAt(0) == '-'){
+                    logik.setEingabe1(logik.getEingabe1().substring(1));
+                    ausgabe1.setText(logik.getEingabe1());
                 }
                 else {
-                    eingabe1 = "-" + eingabe1;
-                    ausgabe1.setText(eingabe1);
+                    logik.setEingabe1("-" + logik.getEingabe1());
+                    ausgabe1.setText(logik.getEingabe1());
                 }
 
             }
@@ -343,117 +284,32 @@ public class Rechner extends JFrame{
         button_hochzwei.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (eingabe1.length() > 0) {
+                if (logik.getEingabe1().length() > 0) {
                     // Falls Komma vorhanden, dann umwandeln
-                    eingabe1 = eingabe1.replace(',', '.');
-                    double temp = Double.parseDouble(eingabe1);
+                    logik.setEingabe1(logik.getEingabe1().replace(',', '.'));
+                    double temp = Double.parseDouble(logik.getEingabe1());
                     temp = temp * temp;
-                    eingabe1 = ausgabe(temp);
-                    ausgabe1.setText(eingabe1);
+                    logik.setEingabe1(logik.ausgabe(temp));
+                    ausgabe1.setText(logik.getEingabe1());
                 }
             }
         });
         button_wurzel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (eingabe1.length() > 0) {
+                if (logik.getEingabe1().length() > 0) {
                     // Falls Komma vorhanden, dann umwandeln
-                    eingabe1 = eingabe1.replace(',', '.');
-                    double temp = Double.parseDouble(eingabe1);
+                    logik.setEingabe1(logik.getEingabe1().replace(',', '.'));
+                    double temp = Double.parseDouble(logik.getEingabe1());
                     temp = Math.sqrt(temp);
-                    eingabe1 = ausgabe(temp);
-                    ausgabe1.setText(eingabe1);
+                    logik.setEingabe1(logik.ausgabe(temp));
+                    ausgabe1.setText(logik.getEingabe1());
                 }
             }
         });
     }
 
 
-    private void anzeige(char operand){
-        if (ausgabe2.getText().equals("")){
-            ausgabe2.setText(eingabe1 + " " + operand);
-            eingabe1 = "";
-            ausgabe1.setText("");
 
-            if (ausgabe3.getText().equals("")){
-                eingabe3 += ausgabe2.getText() + " ";
-                ausgabe3.setText(eingabe3);
-            }
-            else {
-                eingabe3 +="\n" + ausgabe2.getText() + " ";
-                ausgabe3.setText(eingabe3);
-            }
-        }
-        else {
-            // Entscheidung, ob die Rechnung noch weiter geht.
-            if (eingabe1.equals("0") && ausgabe2.getText().charAt(ausgabe2.getText().length() - 1) == '/'){
-                JOptionPane.showMessageDialog(
-                        Rechner.this,   // Bezug auf das JFrame
-                        "Teilen durch 0 nicht möglich!!!",
-                        "Achtung!",
-                        JOptionPane.INFORMATION_MESSAGE);
-                //Eingabe löschen
-                eingabe1 = "";
-                ausgabe1.setText("");
-                f_durchNull = true;
-            } else {
-                if (operand == ' ') {
-                    ausgabe2.setText(berechnung());
-                    eingabe3 += eingabe1;
-                    ausgabe3.setText(eingabe3);
-                    eingabe1 = "";
-                    ausgabe1.setText("");
-                } else {
-                    ausgabe2.setText(berechnung() + " " + operand);
-                    eingabe3 += eingabe1 + " " + operand + " ";
-                    ausgabe3.setText(eingabe3);
-                    eingabe1 = "";
-                    ausgabe1.setText("");
-                }
-            }
-
-        }
-    }
-
-
-    private String berechnung(){
-        // Kommas in Punkte umwandeln und anhand der Leerzeichen aufteilen
-        String[] parts = ausgabe2.getText().replace(',', '.').split(" ");
-        double zahl = Double.parseDouble(parts[0]);
-        char operator = parts[1].charAt(0);
-
-        // Kommas in Punkte umschreiben
-        eingabe1 = eingabe1.replace(',', '.');
-
-        if (operator == '+'){
-            zahl += Double.parseDouble(eingabe1);
-        } else if (operator == '-') {
-            zahl -= Double.parseDouble(eingabe1);
-        } else if (operator == '/') {
-            zahl /= Double.parseDouble(eingabe1);
-        } else if (operator == '*') {
-            zahl *= Double.parseDouble(eingabe1);
-        }
-
-        return ausgabe(zahl);
-    }
-
-
-    private String ausgabe(Double eingabe){
-        // gibt den String entweder mit oder ohne Nachkommerstellen raus.
-        if (eingabe % 1 == 0){
-            return String.format("%.0f", eingabe);
-        }
-        else {
-            // Nullen am Ende abschneiden
-            String ausgabe = String.format("%.10f", eingabe);
-            for (int i = 0; i < ausgabe.length(); i++){
-                if (ausgabe.endsWith("0")) {
-                    ausgabe = ausgabe.substring(0, ausgabe.length() - 1);
-                }
-            }
-            return ausgabe;
-        }
-    }
 
 }
