@@ -43,8 +43,10 @@ public class RechnenTest {
     //Anzeige testen:
     @Test
     void testErsteEingabe() {
-        logik.setEingabe1("5"); // interne Variable setzen
-        logik.setEingabe3("");  // Historie leer
+        logik.setEingabe1("5");
+        ausgabe1.setText("");
+        ausgabe2.setText("");
+        ausgabe3.setText("");
         f_durchNull = false;
 
         logik.anzeige('+', ausgabe1, ausgabe2, ausgabe3);
@@ -54,6 +56,41 @@ public class RechnenTest {
         assertEquals("5 + ", ausgabe3.getText());
         assertEquals("", logik.getEingabe1());
         assertFalse(f_durchNull);
+    }
+
+    @Test
+    void testBerechnungMitVorherigerEingabe(){
+        logik.setEingabe1("5");
+        ausgabe1.setText("");
+        ausgabe2.setText("5 +");
+        ausgabe3.setText("5 + ");
+        logik.setEingabe3("5 + ");
+        f_durchNull = false;
+
+        logik.anzeige('+', ausgabe1, ausgabe2, ausgabe3);
+
+        assertEquals("", ausgabe1.getText());
+        assertEquals("10 +", ausgabe2.getText());
+        assertEquals("5 + 5 + ", logik.getEingabe3());
+        f_durchNull = false;
+
+    }
+
+    @Test
+    void testBerechnungMitVorherigerEingabeAlsErgebnis(){
+        logik.setEingabe1("5");
+        ausgabe1.setText("");
+        ausgabe2.setText("5 +");
+        ausgabe3.setText("5 + ");
+        logik.setEingabe3("5 + ");
+        f_durchNull = false;
+
+        logik.anzeige(' ', ausgabe1, ausgabe2, ausgabe3);
+
+        assertEquals("", ausgabe1.getText());
+        assertEquals("5 + 5", ausgabe3.getText());
+        f_durchNull = false;
+
     }
 
 }
