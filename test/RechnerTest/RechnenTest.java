@@ -93,4 +93,47 @@ public class RechnenTest {
 
     }
 
+    //berechnung testen:
+    @Test
+    void testAddition() {
+        logik.setEingabe1("3");
+        String result = logik.berechnung("5 +");
+        assertEquals("8", result);
+    }
+
+    @Test
+    void testSubtraktion() {
+        logik.setEingabe1("2.5");
+        String result = logik.berechnung("7,5 -"); // mit Komma
+        assertEquals("5", result);
+    }
+
+    @Test
+    void testMultiplikation() {
+        logik.setEingabe1("4");
+        String result = logik.berechnung("3 *");
+        assertEquals("12", result);
+    }
+
+    @Test
+    void testDivision() {
+        logik.setEingabe1("2");
+        String result = logik.berechnung("8 /");
+        assertEquals("4", result);
+    }
+
+    @Test
+    void testDivisionMitKomma() {
+        logik.setEingabe1("0,5");
+        String result = logik.berechnung("2 /");
+        assertEquals("4", result);
+    }
+
+    @Test
+    void testNegativeZahlen() {
+        logik.setEingabe1("-3");
+        String result = logik.berechnung("-2 +");
+        assertEquals("-5", result);
+    }
+
 }
