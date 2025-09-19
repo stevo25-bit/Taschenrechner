@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class Rechner extends JFrame{
 
-    private RechnerLogik logik = new RechnerLogik();
+    private final RechnerLogik logik = new RechnerLogik();
 
     private JPanel panel;
     private JTextArea ausgabe3;
@@ -66,7 +66,7 @@ public class Rechner extends JFrame{
         ausgabe2.setText("");
 
         // Button von hoch2 und Wurzel benennen
-        button_hochzwei.setText("x\u00B2");
+        button_hochzwei.setText("x²");
         button_wurzel.setText("√x");
 
         button_null.addActionListener(new ActionListener() {
@@ -152,7 +152,7 @@ public class Rechner extends JFrame{
                 }
                 else {
                     //Wenn nichts drin steht, dann mit 0 beginnen
-                    if (logik.getEingabe1().length() == 0){
+                    if (logik.getEingabe1().isEmpty()){
                         logik.setEingabe1(logik.getEingabe1() + "0,");
                         ausgabe1.setText(logik.getEingabe1());
                     } else {
@@ -166,10 +166,10 @@ public class Rechner extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Wenn alles leer, nichts machen
-                if (ausgabe1.getText().length() < 1 && ausgabe2.getText().length() < 1){
+                if (ausgabe1.getText().isEmpty() && ausgabe2.getText().isEmpty()){
                     //Nichts machen
                 } else {
-                    if (ausgabe1.getText().length() > 0) { // in Eingabe 1 was drin steht, dann berechnen
+                    if (!ausgabe1.getText().isEmpty()) { // in Eingabe 1 was drin steht, dann berechnen
                         logik.anzeige('+',ausgabe1, ausgabe2, ausgabe3);
                     } else {
                         // ansonnsten Opperand auf + ändern
@@ -184,10 +184,10 @@ public class Rechner extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Wenn alles leer, nichts machen
-                if (ausgabe1.getText().length() < 1 && ausgabe2.getText().length() < 1){
+                if (ausgabe1.getText().isEmpty() && ausgabe2.getText().isEmpty()){
                     //Nichts machen
                 } else {
-                    if (ausgabe1.getText().length() > 0) {
+                    if (!ausgabe1.getText().isEmpty()) {
                         logik.anzeige('-', ausgabe1, ausgabe2, ausgabe3);
                     } else {
                         // ansonnsten Opperand auf - ändern
@@ -202,10 +202,10 @@ public class Rechner extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Wenn alles leer, nichts machen
-                if (ausgabe1.getText().length() < 1 && ausgabe2.getText().length() < 1){
+                if (ausgabe1.getText().isEmpty() && ausgabe2.getText().isEmpty()){
                     //Nichts machen
                 } else {
-                    if (ausgabe1.getText().length() > 0) {
+                    if (!ausgabe1.getText().isEmpty()) {
                         logik.anzeige('/', ausgabe1, ausgabe2, ausgabe3);
                     } else {
                         // ansonnsten Opperand auf / ändern
@@ -220,17 +220,15 @@ public class Rechner extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Wenn alles leer, nichts machen
-                if (ausgabe1.getText().length() < 1 && ausgabe2.getText().length() < 1){
+                if (ausgabe1.getText().isEmpty() && ausgabe2.getText().isEmpty()){
                     //Nichts machen
+                } else if (!ausgabe1.getText().isEmpty()) {
+                    logik.anzeige('*', ausgabe1, ausgabe2, ausgabe3);
                 } else {
-                    if (ausgabe1.getText().length() > 0) {
-                        logik.anzeige('*', ausgabe1, ausgabe2, ausgabe3);
-                    } else {
-                        // ansonnsten Opperand auf * ändern
-                        ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "*");
-                        logik.setEingabe3(ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "* ");
-                        ausgabe3.setText(logik.getEingabe3());
-                    }
+                    // ansonnsten Opperand auf * ändern
+                    ausgabe2.setText(ausgabe2.getText().substring(0, ausgabe2.getText().length() - 1) + "*");
+                    logik.setEingabe3(ausgabe3.getText().substring(0, ausgabe3.getText().length() - 2) + "* ");
+                    ausgabe3.setText(logik.getEingabe3());
                 }
             }
         });
@@ -243,7 +241,7 @@ public class Rechner extends JFrame{
         button_del_back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (logik.getEingabe1().length() > 0) {
+                if (!logik.getEingabe1().isEmpty()) {
                     logik.setEingabe1(logik.getEingabe1().substring(0, logik.getEingabe1().length() - 1));
                     ausgabe1.setText(logik.getEingabe1());
                 }
@@ -252,14 +250,14 @@ public class Rechner extends JFrame{
         button_del_eingabe.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                logik.setEingabe1(logik.getEingabe1() + "");
+                logik.setEingabe1("");
                 ausgabe1.setText("");
             }
         });
         button_del_alles.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                logik.setEingabe1(logik.getEingabe1() + "");
+                logik.setEingabe1("");
                 logik.setEingabe3("");
                 ausgabe1.setText("");
                 ausgabe2.setText("");
@@ -284,7 +282,7 @@ public class Rechner extends JFrame{
         button_hochzwei.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (logik.getEingabe1().length() > 0) {
+                if (!logik.getEingabe1().isEmpty()) {
                     // Falls Komma vorhanden, dann umwandeln
                     logik.setEingabe1(logik.getEingabe1().replace(',', '.'));
                     double temp = Double.parseDouble(logik.getEingabe1());
@@ -297,7 +295,7 @@ public class Rechner extends JFrame{
         button_wurzel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (logik.getEingabe1().length() > 0) {
+                if (!logik.getEingabe1().isEmpty()) {
                     // Falls Komma vorhanden, dann umwandeln
                     logik.setEingabe1(logik.getEingabe1().replace(',', '.'));
                     double temp = Double.parseDouble(logik.getEingabe1());

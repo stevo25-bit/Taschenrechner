@@ -115,7 +115,7 @@ public class RechnerLogik{
     }
 
     public void berechnen (JLabel ausgabe1, JLabel ausgabe2, JTextArea ausgabe3){
-        if (ausgabe1.getText().length() > 0 && ausgabe2.getText().length() > 0){
+        if (!ausgabe1.getText().isEmpty() && !ausgabe2.getText().isEmpty()){
             anzeige(' ', ausgabe1, ausgabe2, ausgabe3);
             // Wenn durch null geteilt wird, dann nichts ausgeben
             if (f_durchNull){
@@ -128,14 +128,14 @@ public class RechnerLogik{
                 ausgabe3.setText(eingabe3);
                 ausgabe2.setText("");
             }
-        } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() > 0){
+        } else if (ausgabe1.getText().isEmpty() && !ausgabe2.getText().isEmpty()){
             // Übergibt die letzte Zahl der Eingabe
-            String temp [] = ausgabe3.getText().split("\n");
+            String[] temp = ausgabe3.getText().split("\n");
             if (temp.length > 1){
-                String temp1 [] = temp[temp.length - 1].split(" ");
+                String[] temp1 = temp[temp.length - 1].split(" ");
                 eingabe1 = temp1[temp1.length - 2];
             } else {
-                String temp1 [] = temp[0].split(" ");
+                String[] temp1 = temp[0].split(" ");
                 eingabe1 = temp1[temp1.length - 2];
             }
             // Übergibt den letzten Opperanten
@@ -155,12 +155,12 @@ public class RechnerLogik{
                 ausgabe2.setText("");
                 eingabe1 = "";
             }
-        } else if (ausgabe1.getText().length() == 0 && ausgabe2.getText().length() == 0 && ausgabe3.getText().length() > 0){
+        } else if (ausgabe1.getText().isEmpty() && ausgabe2.getText().isEmpty() && !ausgabe3.getText().isEmpty()){
 
             // Erstmal alle Informationen holen, die wir brauchen
-            String temp [] = ausgabe3.getText().split("\n");
-            String temp1 [] = temp[temp.length - 2].split(" ");
-            String temp2 [] = temp[temp.length - 1].split("= ");
+            String[] temp = ausgabe3.getText().split("\n");
+            String[] temp1 = temp[temp.length - 2].split(" ");
+            String[] temp2 = temp[temp.length - 1].split("= ");
 
             //Werte zuweisen
             eingabe1 = temp1[temp1.length - 1];

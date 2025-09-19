@@ -12,8 +12,6 @@ public class RechnenTest {
     private JLabel ausgabe1 = new JLabel();
     private JLabel ausgabe2 = new JLabel();
     private JTextArea ausgabe3 = new JTextArea();
-    private boolean f_durchNull = false;
-
 
     // Ausgabe Methode testen
     @Test
@@ -47,7 +45,7 @@ public class RechnenTest {
         ausgabe1.setText("");
         ausgabe2.setText("");
         ausgabe3.setText("");
-        f_durchNull = false;
+        logik.setF_durchNull(false);
 
         logik.anzeige('+', ausgabe1, ausgabe2, ausgabe3);
 
@@ -55,7 +53,7 @@ public class RechnenTest {
         assertEquals("5 +", ausgabe2.getText());
         assertEquals("5 + ", ausgabe3.getText());
         assertEquals("", logik.getEingabe1());
-        assertFalse(f_durchNull);
+        assertFalse(logik.getF_durchNull());
     }
 
     @Test
@@ -65,14 +63,14 @@ public class RechnenTest {
         ausgabe2.setText("5 +");
         ausgabe3.setText("5 + ");
         logik.setEingabe3("5 + ");
-        f_durchNull = false;
+        logik.setF_durchNull(false);
 
         logik.anzeige('+', ausgabe1, ausgabe2, ausgabe3);
 
         assertEquals("", ausgabe1.getText());
         assertEquals("10 +", ausgabe2.getText());
         assertEquals("5 + 5 + ", logik.getEingabe3());
-        f_durchNull = false;
+        logik.setF_durchNull(false);
 
     }
 
@@ -83,13 +81,13 @@ public class RechnenTest {
         ausgabe2.setText("5 +");
         ausgabe3.setText("5 + ");
         logik.setEingabe3("5 + ");
-        f_durchNull = false;
+        logik.setF_durchNull(false);
 
         logik.anzeige(' ', ausgabe1, ausgabe2, ausgabe3);
 
         assertEquals("", ausgabe1.getText());
         assertEquals("5 + 5", ausgabe3.getText());
-        f_durchNull = false;
+        logik.setF_durchNull(false);
 
     }
 
@@ -134,6 +132,68 @@ public class RechnenTest {
         logik.setEingabe1("-3");
         String result = logik.berechnung("-2 +");
         assertEquals("-5", result);
+    }
+
+    //berechnen testen
+    @Test
+    void testBerechnenMitBeidenEingaben() {
+        logik.setEingabe1("3");
+        ausgabe1.setText("3");
+        ausgabe2.setText("5 +");
+        logik.setEingabe3("");
+        logik.setF_durchNull(false);
+
+        logik.berechnen(ausgabe1, ausgabe2, ausgabe3);
+
+        assertEquals("", ausgabe1.getText());
+        assertEquals("", ausgabe2.getText());
+        assertTrue(ausgabe3.getText().contains("= 8"));
+        assertEquals("", logik.getEingabe1());
+        assertFalse(logik.getF_durchNull());
+    }
+
+    @Test
+    void testBerechnenMitLetzterEingabe() {
+        ausgabe1.setText("");
+        ausgabe2.setText("");
+        ausgabe3.setText("5 + 2\n= 7");
+        logik.setEingabe1("2");
+        logik.setF_durchNull(false);
+
+        logik.berechnen(ausgabe1, ausgabe2, ausgabe3);
+
+        assertEquals("", ausgabe1.getText());
+        assertEquals("", ausgabe2.getText());
+        assertTrue(ausgabe3.getText().contains("= 9"));
+    }
+
+    @Test
+    void testBerechnenAllesLeer() {
+        ausgabe1.setText("");
+        ausgabe2.setText("");
+        ausgabe3.setText("");
+        logik.setEingabe1("3");
+
+        logik.berechnen(ausgabe1, ausgabe2, ausgabe3);
+
+        // Nichts passiert
+        assertEquals("", ausgabe1.getText());
+        assertEquals("", ausgabe2.getText());
+        assertEquals("", ausgabe3.getText());
+    }
+
+    @Test
+    void testDivisionDurchNull() {
+        logik.setEingabe1("0");
+        ausgabe1.setText("0");
+        ausgabe2.setText("5 /");
+        logik.setF_durchNull(false);
+
+        logik.berechnen(ausgabe1, ausgabe2, ausgabe3);
+
+        assertEquals("", logik.getEingabe1());
+        assertEquals("", ausgabe1.getText());
+        assertFalse(logik.getF_durchNull()); // wird nach Berechnung zurückgesetzt
     }
 
 }
